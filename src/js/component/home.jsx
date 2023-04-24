@@ -1,24 +1,19 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
+import "../../styles/index.css";
 
 //create your first component
 const Home = () => {
+	const [lightUp, setLightUp] = useState("")
+	const handleClick = (color) => {
+		setLightUp(color);}
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="flex-column d-flex align-items-center">
+			<div className="semaforo flex-column  d-flex align-items-center gap-4 rounded p-3 bg-dark">
+				<div className={`light_red ${lightUp == "danger" && "lighton_red"}`} onClick={() => { handleClick("danger") }} id="red"></div>
+				<div className={`light_yellow ${lightUp == "warning" && "lighton_yellow"}`} onClick={() => { handleClick("warning") }}id="yellow"></div>
+				<div className={`light_green ${lightUp == "success" && "lighton_Green"}`} onClick={() => { handleClick("success") }}id="green"></div>
+			</div>
+			<div className="base bg-dark"></div>
 		</div>
 	);
 };
